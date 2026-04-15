@@ -84,12 +84,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Set Active Link based on current page
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    document.querySelectorAll('.nav-link').forEach(link => {
-        const linkPage = link.getAttribute('href');
-        link.classList.toggle('active', linkPage === currentPage);
-    });
+    // Set Active Nav Link — auto-detects current page from URL
+    (function setActiveNavLink() {
+        let page = window.location.pathname.split('/').pop();
+        // Handle root URL, empty path, or hash-only (all = home)
+        if (!page || page === '' || page === '/' || /^#/.test(page)) page = 'index.html';
+        document.querySelectorAll('.nav-link').forEach(link => {
+            const href = link.getAttribute('href') || '';
+            const linkPage = href.split('/').pop().split('#')[0] || 'index.html';
+            link.classList.toggle('active', linkPage === page);
+        });
+    })();
 
     // Vanilla Tilt Initialization
     if (typeof VanillaTilt !== 'undefined') {
