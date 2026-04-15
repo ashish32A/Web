@@ -1,0 +1,425 @@
+/* General Animations */
+
+/* Preloader */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+#preloader.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Glowing ring behind the logo */
+.loader-ring {
+  position: relative;
+  width: 130px;
+  height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader-ring::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--primary) 0%,
+    rgba(241, 90, 36, 0.8) 30%,
+    rgba(255, 192, 0, 0.6) 50%,
+    transparent 70%
+  );
+  animation: spinRing 1.4s linear infinite;
+  z-index: 0;
+}
+
+.loader-ring::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  background: #fff;
+  z-index: 1;
+}
+
+@keyframes spinRing {
+  to { transform: rotate(360deg); }
+}
+
+/* The actual logo image */
+.loader-logo-img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+  animation: logoBreathe 1.8s ease-in-out infinite;
+  filter: drop-shadow(0 0 12px rgba(215, 47, 45, 0.45));
+}
+
+@keyframes logoBreathe {
+  0%, 100% { transform: scale(1);   opacity: 1; }
+  50%       { transform: scale(1.1); opacity: 0.85; }
+}
+
+/* Dots progress bar */
+.loader-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.loader-dots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--primary);
+  animation: dotPulse 1.2s ease-in-out infinite;
+  opacity: 0.3;
+}
+
+.loader-dots span:nth-child(1) { animation-delay: 0s; }
+.loader-dots span:nth-child(2) { animation-delay: 0.2s; }
+.loader-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes dotPulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.4); }
+}
+
+/* Hero Orbs */
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 0;
+  opacity: 0.6;
+  animation: floatOrb 10s infinite alternate ease-in-out;
+}
+
+.orb-1 { width: 400px; height: 400px; background: rgba(215, 47, 45, 0.25); top: -100px; left: -100px; }
+.orb-2 { width: 300px; height: 300px; background: rgba(255, 192, 0, 0.2); bottom: 100px; right: -50px; animation-delay: -3s; }
+.orb-3 { width: 350px; height: 350px; background: rgba(241, 90, 36, 0.18); top: 50%; left: 50%; transform: translate(-50%, -50%); animation-delay: -6s; }
+
+@keyframes floatOrb {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(30px, 50px) scale(1.1); }
+  100% { transform: translate(-30px, -20px) scale(0.9); }
+}
+
+/* Scroll Fade In Up — content ALWAYS visible, animation is enhancement only */
+.fade-in-up {
+  opacity: 1;
+  transform: translateY(0);
+  transition: none;
+  will-change: auto;
+}
+
+/* JS adds 'animate-ready' class to body, enabling animations only when JS works */
+.js-animations-ready .fade-in-up {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s ease-out, transform 0.65s ease-out;
+  will-change: opacity, transform;
+}
+
+.js-animations-ready .fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delays */
+.js-animations-ready .fade-in-up:nth-child(1) { transition-delay: 0s; }
+.js-animations-ready .fade-in-up:nth-child(2) { transition-delay: 0.08s; }
+.js-animations-ready .fade-in-up:nth-child(3) { transition-delay: 0.16s; }
+.js-animations-ready .fade-in-up:nth-child(4) { transition-delay: 0.24s; }
+.js-animations-ready .fade-in-up:nth-child(5) { transition-delay: 0.32s; }
+
+
+
+/* ── NEW SCROLL ANIMATIONS (Replaces GSAP) ── */
+
+/* 1. Slide Left */
+.gsap-slide-left {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  will-change: opacity, transform;
+}
+.js-animations-ready .gsap-slide-left {
+  opacity: 0;
+  transform: translateX(-60px);
+}
+.js-animations-ready .gsap-slide-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* 2. Slide Right */
+.gsap-slide-right {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  will-change: opacity, transform;
+}
+.js-animations-ready .gsap-slide-right {
+  opacity: 0;
+  transform: translateX(60px);
+}
+.js-animations-ready .gsap-slide-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* 3. Zoom Rotate */
+.gsap-zoom-rotate {
+  opacity: 1;
+  transform: scale(1) rotate(0);
+  transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  will-change: opacity, transform;
+}
+.js-animations-ready .gsap-zoom-rotate {
+  opacity: 0;
+  transform: scale(0.8) rotate(5deg);
+}
+.js-animations-ready .gsap-zoom-rotate.visible {
+  opacity: 1;
+  transform: scale(1) rotate(0);
+}
+
+/* 4. Text Reveal */
+.gsap-text-reveal {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.js-animations-ready .gsap-text-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+}
+.js-animations-ready .gsap-text-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 5. Staggered Cards (apply to children) */
+.gsap-stagger-cards > * {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+  will-change: opacity, transform;
+}
+.js-animations-ready .gsap-stagger-cards > * {
+  opacity: 0;
+  transform: translateY(40px);
+}
+.js-animations-ready .gsap-stagger-cards > *.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.js-animations-ready .gsap-stagger-cards > *:nth-child(1) { transition-delay: 0s; }
+.js-animations-ready .gsap-stagger-cards > *:nth-child(2) { transition-delay: 0.1s; }
+.js-animations-ready .gsap-stagger-cards > *:nth-child(3) { transition-delay: 0.2s; }
+.js-animations-ready .gsap-stagger-cards > *:nth-child(4) { transition-delay: 0.3s; }
+.js-animations-ready .gsap-stagger-cards > *:nth-child(5) { transition-delay: 0.4s; }
+.js-animations-ready .gsap-stagger-cards > *:nth-child(6) { transition-delay: 0.5s; }
+
+
+/* 3D Orbiting Tech Illustration */
+.orbit-container {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  margin: 0 auto;
+  perspective: 1000px;
+  z-index: 2;
+}
+
+.laptop-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150px;
+  height: 150px;
+  background: var(--glass-bg);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: var(--glass-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  color: var(--primary);
+  box-shadow: var(--glass-shadow);
+  z-index: 5;
+}
+
+.orbit-ring {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: 1px dashed rgba(215, 47, 45, 0.25);
+  border-radius: 50%;
+  animation: orbitRotate 20s linear infinite;
+  transform-style: preserve-3d;
+}
+
+.orbit-ring-2 {
+  width: 140%;
+  height: 140%;
+  top: -20%;
+  left: -20%;
+  animation: orbitRotateRev 25s linear infinite;
+}
+
+.orbit-icon {
+  position: absolute;
+  width: 60px; height: 60px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem;
+  color: var(--primary);
+  box-shadow: 0 10px 20px rgba(215, 47, 45, 0.15);
+  transform-style: preserve-3d;
+  animation: orbitCounterRotate 20s linear infinite;
+}
+
+.orb-i-1 { top: -30px; left: 50%; margin-left: -30px; }
+.orb-i-2 { bottom: -30px; left: 50%; margin-left: -30px; }
+.orb-i-3 { top: 50%; left: -30px; margin-top: -30px; }
+.orb-i-4 { top: 50%; right: -30px; margin-top: -30px; }
+
+.orbit-ring-2 .orbit-icon {
+  animation: orbitCounterRotateRev 25s linear infinite;
+}
+.orb-i-5 { top: 10%; right: 10%; }
+.orb-i-6 { bottom: 10%; left: 10%; }
+
+@keyframes orbitRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes orbitCounterRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-360deg); }
+}
+
+@keyframes orbitRotateRev {
+  0% { transform: rotate(360deg); }
+  100% { transform: rotate(0deg); }
+}
+@keyframes orbitCounterRotateRev {
+  0% { transform: rotate(-360deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* Staggered text entrance */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.3s; }
+.stagger-3 { animation-delay: 0.5s; }
+.stagger-4 { animation-delay: 0.7s; }
+
+/* Timeline animation */
+.timeline-step {
+  position: relative;
+}
+.timeline-dot {
+  width: 20px;
+  height: 20px;
+  background: var(--primary);
+  border-radius: 50%;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 0 10px var(--primary);
+}
+.timeline-line {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  width: calc(100% - 20px);
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary) 50%, transparent 50%);
+  background-size: 10px 2px;
+  z-index: 1;
+  animation: marchLine 20s linear infinite;
+}
+
+@keyframes marchLine {
+  0% { background-position: 0 0; }
+  100% { background-position: 100% 0; }
+}
+
+/* Flip Cards */
+.flip-card {
+  background-color: transparent;
+  perspective: 1000px;
+  height: 400px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 20px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.flip-card-front {
+  background: var(--glass-bg);
+  border: var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.flip-card-back {
+  background: var(--primary);
+  color: white;
+  transform: rotateY(180deg);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.flip-card-back ul {
+  text-align: left;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+}
+.flip-card-back li {
+  margin-bottom: 8px;
+}
+.flip-card-back li::before {
+  content: '→ ';
+  color: var(--accent);
+}

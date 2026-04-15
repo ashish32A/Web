@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog & Insights | A Plus Solution</title>
+    <meta name="description" content="Latest news, industry insights, and technology trends from the A Plus Solution team in Mumbai.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <style>
+        .section { padding: 90px 0; }
+
+        /* Bento/masonry blog grid */
+        .blog-bento {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: minmax(200px, auto);
+            gap: 28px;
+            margin-top: 50px;
+        }
+        .blog-card { overflow: hidden; border-radius: 22px; display: flex; flex-direction: column; }
+        .blog-card.featured { grid-column: span 2; grid-row: span 2; }
+        .blog-card-img { width: 100%; object-fit: cover; flex-shrink: 0; transition: transform 0.4s ease; }
+        .blog-card:hover .blog-card-img { transform: scale(1.04); }
+        .blog-card.featured .blog-card-img { height: 320px; }
+        .blog-card:not(.featured) .blog-card-img { height: 180px; }
+        .blog-card-body { padding: 28px; flex-grow: 1; display: flex; flex-direction: column; }
+        .cat-badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; color: #fff; margin-bottom: 12px; }
+        .cat-red { background: var(--primary); }
+        .cat-orange { background: var(--accent); }
+        .cat-gold { background: var(--gold); color: #333; }
+        .cat-green { background: #10b981; }
+        .cat-purple { background: #8b5cf6; }
+        .blog-date { font-size: 0.82rem; color: var(--subtext); font-weight: 600; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+        .blog-date i { color: var(--primary); }
+        .blog-card h3 { font-size: 1.15rem; line-height: 1.45; margin-bottom: 12px; }
+        .blog-card.featured h3 { font-size: 1.5rem; }
+        .blog-excerpt { font-size: 0.9rem; color: var(--subtext); line-height: 1.7; margin-bottom: 20px; flex-grow: 1; }
+        .read-more { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; color: var(--primary); font-size: 0.9rem; text-decoration: none; transition: gap 0.3s; margin-top: auto; }
+        .read-more:hover { gap: 12px; }
+        .blog-author { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; font-weight: 600; color: var(--primary); margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(0,0,0,0.06); }
+        .blog-author i { color: var(--accent); }
+
+        /* Newsletter section */
+        .newsletter-section {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 28px; padding: 70px; text-align: center;
+            position: relative; overflow: hidden;
+            box-shadow: 0 20px 60px rgba(215,47,45,0.25);
+        }
+        .newsletter-section h2 { color: #fff; font-size: 2.2rem; margin-bottom: 12px; }
+        .newsletter-section p { color: rgba(255,255,255,0.85); margin-bottom: 30px; font-size: 1.05rem; }
+        .newsletter-form { display: flex; gap: 12px; max-width: 500px; margin: 0 auto; }
+        .newsletter-form input {
+            flex: 1; padding: 16px 22px; border-radius: 50px; border: none;
+            font-family: 'Poppins', sans-serif; font-size: 0.95rem; outline: none;
+            background: rgba(255,255,255,0.95);
+        }
+
+        @media(max-width:991px) {
+            .blog-bento { grid-template-columns: repeat(2,1fr); }
+            .blog-card.featured { grid-column: span 2; }
+        }
+        @media(max-width:600px) {
+            .blog-bento { grid-template-columns: 1fr; }
+            .blog-card.featured { grid-column: span 1; grid-row: span 1; }
+            .newsletter-form { flex-direction: column; }
+            .newsletter-section { padding: 40px 24px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-ring">
+            <img src="images/only-A-small.png" alt="A Plus Solution Loading" class="loader-logo-img">
+        </div>
+        <div class="loader-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <!-- ══ Navbar ══ -->
+    <nav class="navbar" id="mainNav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="images/logo.png" alt="A Plus Solution Logo">
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About Us</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="blogs.html" class="nav-link active">Blogs</a></li>
+                <li><a href="contact.html" class="nav-cta"><i class="fa-solid fa-phone-flip"></i> Get In Touch</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger"><i class="fa-solid fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <div class="page-hero">
+        <div class="hero-orb orb-1" style="width:220px;height:220px;top:15%;right:8%;"></div>
+        <div class="hero-orb orb-2" style="width:180px;height:180px;bottom:10%;left:6%;"></div>
+        <div class="container">
+            <span class="label-gold fade-in-up"><i class="fa-solid fa-newspaper"></i> KNOWLEDGE HUB</span>
+            <h1 class="fade-in-up">Latest News &amp; Insights</h1>
+            <p class="fade-in-up" style="font-size:1.1rem;color:var(--subtext);max-width:600px;margin:0 auto 16px;">Stay up-to-date with the latest developments, announcements, and industry insights from A Plus Solution.</p>
+            <div class="breadcrumb fade-in-up"><a href="index.html">Home</a> &rarr; Blogs</div>
+        </div>
+    </div>
+
+    <!-- ══ Blog Bento Grid ══ -->
+    <section class="section container">
+        <div class="blog-bento gsap-stagger-cards">
+
+            <!-- Featured Blog 1 -->
+            <article class="glass-card blog-card featured fade-in-up" style="border-left: 5px solid var(--primary);">
+                <img class="blog-card-img" src="images/Business Automation.jpeg" alt="Business Automation">
+                <div class="blog-card-body">
+                    <span class="cat-badge cat-red"><i class="fa-solid fa-robot"></i> Business Automation</span>
+                    <div class="blog-date"><i class="fa-regular fa-calendar"></i> 02 Apr 2026</div>
+                    <h3>Why Business Automation Fails (And How to Do It Right in 2026)</h3>
+                    <p class="blog-excerpt">Many businesses rush into automation without proper planning. Discover the common pitfalls and how to avoid them for successful implementation in 2026 and beyond.</p>
+                    <div class="blog-author"><i class="fa-solid fa-user-pen"></i> A Plus Solution</div>
+                    <a href="#" class="read-more">Read Full Article <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </article>
+
+            <!-- Blog 2 -->
+            <article class="glass-card blog-card fade-in-up" style="border-top: 4px solid var(--gold);">
+                <img class="blog-card-img" src="images/Technology Adopting.jpeg" alt="Technology Adoption">
+                <div class="blog-card-body">
+                    <span class="cat-badge cat-gold"><i class="fa-solid fa-microchip"></i> Technology</span>
+                    <div class="blog-date"><i class="fa-regular fa-calendar"></i> 31 Mar 2026</div>
+                    <h3>The Hidden Cost of Not Adopting Technology in Business</h3>
+                    <p class="blog-excerpt">Avoiding tech upgrades can silently drain your business resources.</p>
+                    <div class="blog-author"><i class="fa-solid fa-user-pen"></i> A Plus Solution</div>
+                    <a href="#" class="read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </article>
+
+            <!-- Blog 3 -->
+            <article class="glass-card blog-card fade-in-up" style="border-top: 4px solid var(--accent);">
+                <img class="blog-card-img" src="images/Business Trends.jpeg" alt="Business Trends">
+                <div class="blog-card-body">
+                    <span class="cat-badge cat-orange"><i class="fa-solid fa-chart-line"></i> Business Trends</span>
+                    <div class="blog-date"><i class="fa-regular fa-calendar"></i> 23 Mar 2026</div>
+                    <h3>Business Trends in India 2026: Top Trends You Must Know</h3>
+                    <p class="blog-excerpt">India's business landscape is evolving rapidly. Stay ahead of the curve.</p>
+                    <div class="blog-author"><i class="fa-solid fa-user-pen"></i> A Plus Solution</div>
+                    <a href="#" class="read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </article>
+
+            <!-- Blog 4 -->
+            <article class="glass-card blog-card fade-in-up" style="border-top: 4px solid var(--primary);">
+                <img class="blog-card-img" src="images/DIGITAL TRANSFORMATION.jpeg" alt="Mumbai Website">
+                <div class="blog-card-body">
+                    <span class="cat-badge cat-red"><i class="fa-solid fa-laptop-code"></i> Web Design</span>
+                    <div class="blog-date"><i class="fa-regular fa-calendar"></i> 18 Mar 2026</div>
+                    <h3>10 Must-Have Features Every Mumbai Business Website Needs in 2026</h3>
+                    <p class="blog-excerpt">A great website converts visitors into loyal customers.</p>
+                    <div class="blog-author"><i class="fa-solid fa-user-pen"></i> A Plus Solution</div>
+                    <a href="#" class="read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </article>
+
+            <!-- Blog 5 -->
+            <article class="glass-card blog-card fade-in-up" style="border-top: 4px solid var(--gold);">
+                <img class="blog-card-img" src="images/Business Growth.jpeg" alt="Business Growth">
+                <div class="blog-card-body">
+                    <span class="cat-badge cat-purple"><i class="fa-solid fa-arrow-trend-up"></i> Growth</span>
+                    <div class="blog-date"><i class="fa-regular fa-calendar"></i> 06 Mar 2026</div>
+                    <h3>Why Every Business Needs a Website in 2026: Key Benefits</h3>
+                    <p class="blog-excerpt">Not having a website in 2026 is like not having a business card.</p>
+                    <div class="blog-author"><i class="fa-solid fa-user-pen"></i> A Plus Solution</div>
+                    <a href="#" class="read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- ══ Newsletter ══ -->
+    <section class="section container">
+        <div class="newsletter-section fade-in-up">
+            <div style="position:absolute;width:200px;height:200px;background:rgba(255,255,255,0.08);border-radius:50%;top:-60px;right:-60px;"></div>
+            <div style="position:absolute;width:150px;height:150px;background:rgba(255,192,0,0.15);border-radius:50%;bottom:-40px;left:-40px;"></div>
+            <i class="fa-solid fa-paper-plane" style="font-size:3rem;color:rgba(255,255,255,0.4);margin-bottom:16px;display:block;"></i>
+            <h2>Subscribe to Our Newsletter</h2>
+            <p>Get the latest IT insights, tips, and news delivered directly to your inbox. No spam, ever.</p>
+            <div class="newsletter-form">
+                <input type="email" placeholder="Enter your email address..." aria-label="Email for newsletter">
+                <button class="btn" style="background:#fff;color:var(--primary);font-weight:700;white-space:nowrap;border-radius:50px;border:none;padding:16px 28px;">
+                    <i class="fa-solid fa-paper-plane"></i> Subscribe
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ Footer ══ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="images/logo.png" alt="A Plus Solution" style="height:58px;margin-bottom:16px;filter:brightness(0) invert(1);">
+                    <p style="color:#cbd5e1;font-size:0.9rem;">Premier IT services &amp; consulting company based in Mumbai, India.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-contact">
+                        <li><i class="fa-solid fa-location-dot"></i><div>A-1304, Naman Premier, Military Road, Andheri East, Mumbai 400059</div></li>
+                        <li><i class="fa-solid fa-phone"></i> +91 9920898972</li>
+                        <li><i class="fa-solid fa-phone"></i> +91 7039107512</li>
+                        <li><i class="fa-solid fa-envelope"></i> info@aplusolution.in</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Our Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="services.html"><i class="fa-solid fa-angle-right"></i> Digital Transformation</a></li>
+                        <li><a href="services.html"><i class="fa-solid fa-angle-right"></i> Product Engineering</a></li>
+                        <li><a href="services.html"><i class="fa-solid fa-angle-right"></i> Professional Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html"><i class="fa-solid fa-angle-right"></i> About Us</a></li>
+                        <li><a href="services.html"><i class="fa-solid fa-angle-right"></i> Services</a></li>
+                        <li><a href="blogs.html"><i class="fa-solid fa-angle-right"></i> Blog</a></li>
+                        <li><a href="contact.html"><i class="fa-solid fa-angle-right"></i> Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p style="color:#94a3b8;font-size:0.85rem;margin:0;">&copy; 2024 A Plus Solution. All Rights Reserved.</p>
+                <div class="social-icons">
+                    <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/counter.js"></script>
+</body>
+</html>

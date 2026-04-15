@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | A Plus Solution — IT Services Mumbai</title>
+    <meta name="description" content="Explore A Plus Solution's comprehensive IT services: Digital Transformation, Product Engineering, and Professional Consulting Services in Mumbai.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <style>
+        .section { padding: 90px 0; }
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-bottom: 80px; }
+        .two-col.reverse { direction: rtl; }
+        .two-col.reverse > * { direction: ltr; }
+        .list-icon { margin-top: 20px; }
+        .list-icon li { display: flex; gap: 14px; margin-bottom: 14px; align-items: flex-start; }
+        .list-icon i { color: var(--primary); font-size: 1.1rem; margin-top: 4px; flex-shrink: 0; }
+
+        /* Flip Cards */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 36px; margin-top: 50px; }
+        .flip-card { perspective: 1000px; height: 440px; }
+        .flip-card-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.8s; transform-style: preserve-3d; }
+        .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
+        .flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 24px; padding: 40px 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .flip-card-front { background: rgba(255,255,255,0.8); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.5); box-shadow: 0 10px 40px rgba(215,47,45,0.08); }
+        .flip-card-back { background: linear-gradient(135deg, var(--primary), var(--accent)); color: #fff; transform: rotateY(180deg); }
+        .flip-card-front img { width: 100%; height: 160px; object-fit: cover; border-radius: 16px; margin-bottom: 20px; }
+        .flip-service-icon { width:64px;height:64px;border-radius:16px;background:linear-gradient(135deg,rgba(215,47,45,0.12),rgba(241,90,36,0.1));display:flex;align-items:center;justify-content:center;font-size:1.8rem;color:var(--primary);margin:0 auto 14px; }
+        .flip-card-back ul { text-align: left; margin-bottom: 20px; font-size: 0.9rem; }
+        .flip-card-back li { margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .flip-card-back li i { color: var(--gold); }
+        .flip-hint { font-size: 0.78rem; color: var(--subtext); margin-top: auto; display: flex; align-items: center; gap: 5px; }
+
+        /* Stats section */
+        .stats-band {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            padding: 60px 0; color:#fff;
+        }
+        .stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 30px; text-align:center; }
+        .stat-box { background: rgba(255,255,255,0.12); backdrop-filter: blur(10px); padding:40px 20px; border-radius:20px; border:1px solid rgba(255,255,255,0.2); transition:transform 0.4s; }
+        .stat-box:hover { transform: translateY(-12px); }
+        .stat-box i { font-size:2.5rem; color:var(--gold); margin-bottom:12px; display:block; }
+        .stat-box h2 { font-size:3rem; color:#fff; margin-bottom:5px; }
+        .stat-box p { color:rgba(255,255,255,0.85); font-weight:600; margin:0; }
+
+        /* Img card */
+        .info-img { border-radius: 22px; overflow: hidden; box-shadow: 0 20px 50px rgba(215,47,45,0.1); }
+        .info-img img { width:100%; height:380px; object-fit:cover; display:block; }
+
+        @media(max-width:768px){
+            .two-col,.two-col.reverse{grid-template-columns:1fr;direction:ltr;}
+            .stats-grid{grid-template-columns:1fr 1fr;}
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-ring">
+            <img src="images/only-A-small.png" alt="A Plus Solution Loading" class="loader-logo-img">
+        </div>
+        <div class="loader-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <!-- ══ Navbar ══ -->
+    <nav class="navbar" id="mainNav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="images/logo.png" alt="A Plus Solution Logo">
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About Us</a></li>
+                <li><a href="services.html" class="nav-link active">Services</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="blogs.html" class="nav-link">Blogs</a></li>
+                <li><a href="contact.html" class="nav-cta"><i class="fa-solid fa-phone-flip"></i> Get In Touch</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger"><i class="fa-solid fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <div class="page-hero">
+        <div class="hero-orb orb-1" style="width:200px;height:200px;top:20%;right:8%;"></div>
+        <div class="hero-orb orb-2" style="width:180px;height:180px;bottom:10%;left:5%;"></div>
+        <div class="container">
+            <span class="label-gold fade-in-up"><i class="fa-solid fa-layer-group"></i> WHAT WE OFFER</span>
+            <h1 class="fade-in-up">Our IT Services</h1>
+            <p class="fade-in-up" style="font-size:1.1rem;color:var(--subtext);max-width:600px;margin:0 auto 16px;">Comprehensive technology solutions tailored to transform your business in the digital era.</p>
+            <div class="breadcrumb fade-in-up"><a href="index.html">Home</a> &rarr; Services</div>
+        </div>
+    </div>
+
+    <!-- ══ Flip Service Cards ══ -->
+    <section class="section container">
+        <div class="text-center gsap-slide-left fade-in-up" style="text-align:center;max-width:750px;margin:0 auto 20px;">
+            <span class="label-gold"><i class="fa-solid fa-briefcase"></i> OUR SERVICES</span>
+            <h2>Comprehensive IT Services For Your Business</h2>
+            <p>Hover over each card to explore our full range of IT services designed to empower and elevate your business.</p>
+        </div>
+
+        <div class="services-grid gsap-stagger-cards">
+            <!-- Card 1: Digital Transformation -->
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="images/DIGITAL TRANSFORMATION.jpeg" alt="Digital Transformation">
+                        <div class="flip-service-icon"><i class="fa-solid fa-rotate"></i></div>
+                        <h3>DIGITAL TRANSFORMATION</h3>
+                        <p style="font-size:0.9rem;color:var(--subtext);">Modernize your business with our end-to-end digital transformation services.</p>
+                        <div class="flip-hint"><i class="fa-solid fa-hand-pointer"></i> Hover to see details</div>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3 style="color:#fff;margin-bottom:18px;">Digital Transformation</h3>
+                        <ul>
+                            <li><i class="fa-solid fa-chevron-right"></i> Application Modernization</li>
+                            <li><i class="fa-solid fa-chevron-right"></i> Data Analytics &amp; BI</li>
+                            <li><i class="fa-solid fa-chevron-right"></i> Cloud Services</li>
+                            <li><i class="fa-solid fa-chevron-right"></i> Automation &amp; RPA</li>
+                            <li><i class="fa-solid fa-chevron-right"></i> Big Data Solutions</li>
+                            <li><i class="fa-solid fa-chevron-right"></i> ETL &amp; Data Warehouse</li>
+                        </ul>
+                        <a href="contact.html" class="btn" style="background:rgba(255,255,255,0.2);color:#fff;border:1px solid rgba(255,255,255,0.4);">
+                            <i class="fa-solid fa-phone-flip"></i> Get Started
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: Product Engineering -->
+            <div class="flip-card" style="margin-top: 60px;">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="images/PRODUCT ENGINEERING.jpeg" alt="Product Engineering">
+                        <div class="flip-service-icon"><i class="fa-solid fa-gears"></i></div>
+                        <h3>PRODUCT ENGINEERING</h3>
+                        <p style="font-size:0.9rem;color:var(--subtext);">Build and launch world-class software products with our engineering expertise.</p>
+                        <div class="flip-hint"><i class="fa-solid fa-hand-pointer"></i> Hover to see details</div>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3 style="color:#fff;margin-bottom:18px;">Product Engineering</h3>
+                        <ul>
+                            <li><i class="fa-solid fa-chevron-right"></i> Application Re-Engineering</li>
+                            <li><i class="fa-solid fa-chevron-right"></i> DevOps &amp; CI/CD</li>
+                            <li><i class="fa-solid fa-chevron-right"></i> Product Design &amp; Ideation</li>
+                            <li><i class="fa-solid fa-chevron-right"></i> Cloud Integration</li>
+                            <li><i class="fa-solid fa-chevron-right"></i> Product Analytics</li>
+                            <li><i class="fa-solid fa-chevron-right"></i> Maintenance &amp; Support</li>
+                        </ul>
+                        <a href="contact.html" class="btn" style="background:rgba(255,255,255,0.2);color:#fff;border:1px solid rgba(255,255,255,0.4);">
+                            <i class="fa-solid fa-phone-flip"></i> Get Started
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Professional Services -->
+            <div class="flip-card" style="margin-top: 120px;">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="images/PROFESSIONAL SERVICES.jpeg" alt="Professional Services">
+                        <div class="flip-service-icon"><i class="fa-solid fa-handshake"></i></div>
+                        <h3>PROFESSIONAL SERVICES</h3>
+                        <p style="font-size:0.9rem;color:var(--subtext);">Expert consulting, integration, and managed services for your IT ecosystem.</p>
+                        <div class="flip-hint"><i class="fa-solid fa-hand-pointer"></i> Hover to see details</div>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3 style="color:#fff;margin-bottom:18px;">Professional Services</h3>
+                        <ul>
+                            <li><i class="fa-solid fa-chevron-right"></i> IT Consulting</li>
+                            <li><i class="fa-solid fa-chevron-right"></i> System Integration</li>
+                            <li><i class="fa-solid fa-chevron-right"></i> Manpower Outsourcing</li>
+                            <li><i class="fa-solid fa-chevron-right"></i> AWS &amp; Azure Managed</li>
+                            <li><i class="fa-solid fa-chevron-right"></i> Application Management</li>
+                            <li><i class="fa-solid fa-chevron-right"></i> Digital Marketing</li>
+                        </ul>
+                        <a href="contact.html" class="btn" style="background:rgba(255,255,255,0.2);color:#fff;border:1px solid rgba(255,255,255,0.4);">
+                            <i class="fa-solid fa-phone-flip"></i> Get Started
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4: Chatbot Services -->
+            <div class="flip-card" style="margin-top: 0px;">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="images/Business Automation.jpeg" alt="Chatbot Services">
+                        <div class="flip-service-icon"><i class="fa-solid fa-robot"></i></div>
+                        <h3>CHATBOT SERVICES</h3>
+                        <p style="font-size:0.9rem;color:var(--subtext);">Automate interactions and boost engagement with intelligent AI chatbots.</p>
+                        <div class="flip-hint"><i class="fa-solid fa-hand-pointer"></i> Hover to see details</div>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3 style="color:#fff;margin-bottom:18px;">Chatbot Services</h3>
+                        <ul>
+                            <li><i class="fa-solid fa-chevron-right"></i> AI Customer Support</li>
+                            <li><i class="fa-solid fa-chevron-right"></i> Lead Generation Bots</li>
+                            <li><i class="fa-solid fa-chevron-right"></i> Omnichannel Integration</li>
+                            <li><i class="fa-solid fa-chevron-right"></i> Natural Language Processing</li>
+                            <li><i class="fa-solid fa-chevron-right"></i> 24/7 Automated Engagement</li>
+                            <li><i class="fa-solid fa-chevron-right"></i> Custom Bot Development</li>
+                        </ul>
+                        <a href="contact.html" class="btn" style="background:rgba(255,255,255,0.2);color:#fff;border:1px solid rgba(255,255,255,0.4);">
+                            <i class="fa-solid fa-phone-flip"></i> Get Started
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5: Digital Marketing -->
+            <div class="flip-card" style="margin-top: 60px;">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="images/Digital Marketing.jpeg" alt="Digital Marketing">
+                        <div class="flip-service-icon"><i class="fa-solid fa-bullseye"></i></div>
+                        <h3>DIGITAL MARKETING</h3>
+                        <p style="font-size:0.9rem;color:var(--subtext);">Amplify your online presence with data-driven marketing campaigns.</p>
+                        <div class="flip-hint"><i class="fa-solid fa-hand-pointer"></i> Hover to see details</div>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3 style="color:#fff;margin-bottom:18px;">Digital Marketing</h3>
+                        <ul>
+                            <li><i class="fa-solid fa-chevron-right"></i> Search Engine Optimization</li>
+                            <li><i class="fa-solid fa-chevron-right"></i> Social Media Marketing</li>
+                            <li><i class="fa-solid fa-chevron-right"></i> Pay-Per-Click (PPC)</li>
+                            <li><i class="fa-solid fa-chevron-right"></i> Content Marketing</li>
+                            <li><i class="fa-solid fa-chevron-right"></i> Email Campaigns</li>
+                            <li><i class="fa-solid fa-chevron-right"></i> Conversion Optimization</li>
+                        </ul>
+                        <a href="contact.html" class="btn" style="background:rgba(255,255,255,0.2);color:#fff;border:1px solid rgba(255,255,255,0.4);">
+                            <i class="fa-solid fa-phone-flip"></i> Get Started
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6: Performance Marketing -->
+            <div class="flip-card" style="margin-top: 120px;">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="images/Business Growth.jpeg" alt="Performance Marketing">
+                        <div class="flip-service-icon"><i class="fa-solid fa-chart-line"></i></div>
+                        <h3>PERFORMANCE MARKETING</h3>
+                        <p style="font-size:0.9rem;color:var(--subtext);">Maximize your ROI with data-driven, measurable performance marketing campaigns.</p>
+                        <div class="flip-hint"><i class="fa-solid fa-hand-pointer"></i> Hover to see details</div>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3 style="color:#fff;margin-bottom:18px;">Performance Marketing</h3>
+                        <ul>
+                            <li><i class="fa-solid fa-chevron-right"></i> CPA &amp; CPL Optimization</li>
+                            <li><i class="fa-solid fa-chevron-right"></i> Affiliate Marketing</li>
+                            <li><i class="fa-solid fa-chevron-right"></i> Real-Time Analytics</li>
+                            <li><i class="fa-solid fa-chevron-right"></i> A/B Testing &amp; Scaling</li>
+                            <li><i class="fa-solid fa-chevron-right"></i> Programmatic Advertising</li>
+                            <li><i class="fa-solid fa-chevron-right"></i> ROI-Driven Ad Campaigns</li>
+                        </ul>
+                        <a href="contact.html" class="btn" style="background:rgba(255,255,255,0.2);color:#fff;border:1px solid rgba(255,255,255,0.4);">
+                            <i class="fa-solid fa-phone-flip"></i> Get Started
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Counter Strip -->
+        <div class="stats-band gsap-stagger-cards" style="border-radius:30px; margin-top:100px; overflow:hidden;">
+            <div class="container stats-grid">
+                <div class="stat-box fade-in-up">
+                    <i class="fa-solid fa-users"></i>
+                    <h2><span class="counter-val" data-target="31">0</span>+</h2>
+                    <p>Happy Clients</p>
+                </div>
+                <div class="stat-box fade-in-up" style="transition-delay:0.1s;">
+                    <i class="fa-solid fa-folder-open"></i>
+                    <h2><span class="counter-val" data-target="139">0</span></h2>
+                    <p>Projects Done</p>
+                </div>
+                <div class="stat-box fade-in-up" style="transition-delay:0.2s;">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <h2><span class="counter-val" data-target="786">0</span></h2>
+                    <p>Days of Work</p>
+                </div>
+                <div class="stat-box fade-in-up" style="transition-delay:0.3s;">
+                    <i class="fa-solid fa-award"></i>
+                    <h2><span class="counter-val" data-target="1">0</span></h2>
+                    <p>Award Winner</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ Marketing Section ══ -->
+    <section class="section gsap-parallax-bg" style="background: url('images/Digital\ Marketing.jpeg') center/cover fixed; position:relative;">
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(215,47,45,0.92),rgba(192,57,43,0.88));"></div>
+        <div class="container two-col" style="position:relative;z-index:2;color:#fff;">
+            <div class="glass-card fade-in-up" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);text-align:center;min-height:380px;display:flex;align-items:center;justify-content:center;padding:24px;">
+               <img src="images/marketing.jpeg" alt="Digital Marketing" style="width: 100%; max-height: 330px; object-fit: contain; border-radius: 16px;">
+            </div>
+            <div class="gsap-slide-right fade-in-up">
+                <span style="color:var(--gold);font-weight:700;letter-spacing:2px;font-size:0.85rem;">
+                    <i class="fa-solid fa-megaphone"></i> MARKETING SOLUTIONS
+                </span>
+                <h2 style="color:#fff;margin-top:12px;">The Next Generation of Digital Marketing</h2>
+                <p style="color:rgba(255,255,255,0.85);">Our approach to business planning involves a systematic process of brainstorming, researching, planning, and strategizing work.</p>
+                <ul class="list-icon" style="color:#fff;">
+                    <li style="color:rgba(255,255,255,0.9);"><i class="fa-solid fa-circle-check" style="color:var(--gold);"></i><div>SEO &amp; content strategy to boost organic visibility</div></li>
+                    <li style="color:rgba(255,255,255,0.9);"><i class="fa-solid fa-circle-check" style="color:var(--gold);"></i><div>Social media management across all major platforms</div></li>
+                    <li style="color:rgba(255,255,255,0.9);"><i class="fa-solid fa-circle-check" style="color:var(--gold);"></i><div>Performance marketing with measurable ROI</div></li>
+                </ul>
+                <a href="contact.html" class="btn" style="background:#fff;color:var(--primary);font-weight:700;margin-top:20px;">
+                    <i class="fa-solid fa-arrow-right"></i> Learn More
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ Business Growth Section ══ -->
+    <section class="section container">
+        <div class="two-col reverse fade-in-up">
+            <div class="info-img gsap-slide-left">
+                <img src="images/Business Growth.jpeg" alt="Business Growth">
+            </div>
+            <div class="gsap-slide-right gsap-text-reveal fade-in-up">
+                <span class="label-gold"><i class="fa-solid fa-arrow-trend-up"></i> BUSINESS GROWTH</span>
+                <h2>Getting the Maximum Out of Any Business</h2>
+                <p>In a world where change is the only constant, A Plus Solution stands as your beacon of stability and progress. We don't just adapt to change; we drive it.</p>
+                <p>Think of us not just as a service provider but as an extension of your team — an ally in your pursuit of digital excellence. Whether you're a startup or an enterprise, we're here to empower, innovate, and elevate.</p>
+                <ul class="list-icon">
+                    <li><i class="fa-solid fa-circle-check"></i><div>Agile delivery methodology for faster time-to-market</div></li>
+                    <li><i class="fa-solid fa-circle-check"></i><div>Post-deployment support and continuous improvement</div></li>
+                    <li><i class="fa-solid fa-circle-check"></i><div>Scalable architectures that grow with your business</div></li>
+                </ul>
+                <a href="contact.html" class="btn btn-primary" style="margin-top:20px;">
+                    <i class="fa-solid fa-phone-flip"></i> Book Consultation
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ Footer ══ -->
+    <footer class="footer fade-in-up">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="images/logo.png" alt="A Plus Solution" style="height:58px;margin-bottom:16px;filter:brightness(0) invert(1);">
+                    <p style="color:#cbd5e1;font-size:0.9rem;">Premier IT services &amp; consulting company based in Mumbai, India.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-contact">
+                        <li><i class="fa-solid fa-location-dot"></i><div>A-1304, Naman Premier, Military Road, Andheri East, Mumbai 400059</div></li>
+                        <li><i class="fa-solid fa-phone"></i> +91 9920898972</li>
+                        <li><i class="fa-solid fa-phone"></i> +91 7039107512</li>
+                        <li><i class="fa-solid fa-envelope"></i> info@aplusolution.in</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Our Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="services.html"><i class="fa-solid fa-angle-right"></i> Digital Transformation</a></li>
+                        <li><a href="services.html"><i class="fa-solid fa-angle-right"></i> Product Engineering</a></li>
+                        <li><a href="services.html"><i class="fa-solid fa-angle-right"></i> Professional Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html"><i class="fa-solid fa-angle-right"></i> About Us</a></li>
+                        <li><a href="services.html"><i class="fa-solid fa-angle-right"></i> Services</a></li>
+                        <li><a href="blogs.html"><i class="fa-solid fa-angle-right"></i> Blog</a></li>
+                        <li><a href="contact.html"><i class="fa-solid fa-angle-right"></i> Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p style="color:#94a3b8;font-size:0.85rem;margin:0;">&copy; 2024 A Plus Solution. All Rights Reserved.</p>
+                <div class="social-icons">
+                    <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/counter.js"></script>
+</body>
+</html>

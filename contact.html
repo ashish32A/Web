@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | A Plus Solution — Mumbai</title>
+    <meta name="description" content="Get in touch with A Plus Solution. We are based in Andheri East, Mumbai. Call +91 9920898972 or email info@aplusolution.in.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <style>
+        .section { padding: 90px 0; }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: 0;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 20px 70px rgba(215,47,45,0.12);
+        }
+        .contact-info-panel {
+            background: linear-gradient(160deg, var(--primary), var(--accent));
+            color: #fff; padding: 60px 50px;
+            display: flex; flex-direction: column; gap: 0;
+        }
+        .contact-info-panel h3 { color: #fff; font-size: 2rem; margin-bottom: 10px; }
+        .contact-info-panel > p { color: rgba(255,255,255,0.8); margin-bottom: 40px; }
+        .contact-list { list-style: none; display: flex; flex-direction: column; gap: 24px; margin-top: 0; }
+        .contact-list li { display: flex; align-items: flex-start; gap: 16px; }
+        .contact-icon {
+            width: 48px; height: 48px; border-radius: 12px;
+            background: rgba(255,255,255,0.15); display: flex;
+            align-items: center; justify-content: center;
+            font-size: 1.2rem; color: #fff; flex-shrink: 0;
+        }
+        .contact-list strong { display: block; font-weight: 700; color: #fff; margin-bottom: 2px; }
+        .contact-list span { color: rgba(255,255,255,0.8); font-size: 0.9rem; }
+        .contact-socials { display: flex; gap: 12px; margin-top: auto; padding-top: 40px; }
+        .contact-socials a {
+            width: 44px; height: 44px; border-radius: 50%;
+            background: rgba(255,255,255,0.15); color: #fff;
+            display: flex; align-items: center; justify-content: center;
+            transition: 0.3s; text-decoration: none;
+        }
+        .contact-socials a:hover { background: rgba(255,255,255,0.3); transform: translateY(-3px); }
+
+        .contact-form-panel {
+            background: #fff; padding: 60px 50px;
+        }
+        .contact-form-panel h3 { font-size: 2rem; margin-bottom: 8px; }
+        .contact-form-panel > p { color: var(--subtext); margin-bottom: 36px; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+        .form-group label { font-weight: 600; font-size: 0.9rem; color: var(--text); }
+        .form-group input, .form-group select, .form-group textarea {
+            padding: 14px 18px; border-radius: 12px;
+            border: 2px solid #eee; font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem; color: var(--text); outline: none;
+            transition: border 0.3s, box-shadow 0.3s; background: #fafafa;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(215,47,45,0.08);
+            background: #fff;
+        }
+        .form-group textarea { resize: vertical; min-height: 120px; }
+        .form-group.full { grid-column: 1 / -1; }
+        #successMsg { display:none; background:linear-gradient(135deg,#10b98122,#10b98133); border:1px solid #10b981; color:#059669; padding:16px 20px; border-radius:12px; margin-top:16px; display: none; font-weight:600; }
+
+        /* Map section */
+        .map-section { border-radius: 24px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.08); }
+        .map-section iframe { width: 100%; height: 420px; border: none; display: block; }
+
+        @media(max-width:768px){
+            .contact-grid { grid-template-columns: 1fr; }
+            .form-grid { grid-template-columns: 1fr; }
+            .contact-info-panel { padding: 40px 30px; }
+            .contact-form-panel { padding: 40px 30px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-ring">
+            <img src="images/only-A-small.png" alt="A Plus Solution Loading" class="loader-logo-img">
+        </div>
+        <div class="loader-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <!-- ══ Navbar ══ -->
+    <nav class="navbar" id="mainNav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="images/logo.png" alt="A Plus Solution Logo">
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About Us</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="contact.html" class="nav-link active">Contact</a></li>
+                <li><a href="blogs.html" class="nav-link">Blogs</a></li>
+                <li><a href="contact.html" class="nav-cta"><i class="fa-solid fa-phone-flip"></i> Get In Touch</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger"><i class="fa-solid fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <div class="page-hero">
+        <div class="hero-orb orb-1" style="width:250px;height:250px;top:10%;left:5%;"></div>
+        <div class="hero-orb orb-2" style="width:200px;height:200px;bottom:10%;right:8%;"></div>
+        <div class="container">
+            <span class="label-gold fade-in-up"><i class="fa-solid fa-envelope"></i> REACH US</span>
+            <h1 class="fade-in-up">Contact A Plus Solution</h1>
+            <p class="fade-in-up" style="font-size:1.1rem;color:var(--subtext);max-width:550px;margin:0 auto 16px;">We'd love to hear from you. Let's build something great together.</p>
+            <div class="breadcrumb fade-in-up"><a href="index.html">Home</a> &rarr; Contact</div>
+        </div>
+    </div>
+
+    <!-- ══ Contact Grid ══ -->
+    <section class="section">
+        <div class="container">
+            <div class="contact-grid gsap-stagger-cards fade-in-up">
+                <!-- Info Panel -->
+                <div class="contact-info-panel">
+                    <h3><i class="fa-solid fa-headset"></i> Let's Talk</h3>
+                    <p>Have a project in mind or need advice? Our team is ready to assist you.</p>
+
+                    <ul class="contact-list">
+                        <li>
+                            <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+                            <div>
+                                <strong>Email</strong>
+                                <span>info@aplusolution.in</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="contact-icon" style="background:rgba(255,192,0,0.25);"><i class="fa-solid fa-phone"></i></div>
+                            <div>
+                                <strong>Phone</strong>
+                                <span>+91 7039107512<br>+91 9920898972</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="contact-icon" style="background:rgba(255,255,255,0.2);"><i class="fa-solid fa-location-dot"></i></div>
+                            <div>
+                                <strong>Office Address</strong>
+                                <span>A-1304, Naman Premier, Military Road,<br>Andheri East, Mumbai 400059</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="contact-icon"><i class="fa-solid fa-clock"></i></div>
+                            <div>
+                                <strong>Business Hours</strong>
+                                <span>Mon – Fri: 10:00 AM – 7:00 PM<br>Sat: 10:00 AM – 3:00 PM</span>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="contact-socials">
+                        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <!-- Form Panel -->
+                <div class="contact-form-panel">
+                    <h3>Send Us a Message</h3>
+                    <p>Fill out the form below and our team will get back to you within 24 hours.</p>
+                    <form id="contactForm" onsubmit="submitForm(event)">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="firstName"><i class="fa-solid fa-user"></i> First Name</label>
+                                <input type="text" id="firstName" placeholder="Enter first name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName"><i class="fa-solid fa-user"></i> Last Name</label>
+                                <input type="text" id="lastName" placeholder="Enter last name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="emailField"><i class="fa-solid fa-envelope"></i> Email Address</label>
+                                <input type="email" id="emailField" placeholder="your@email.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phoneField"><i class="fa-solid fa-phone"></i> Phone Number</label>
+                                <input type="tel" id="phoneField" placeholder="+91 XXXXX XXXXX">
+                            </div>
+                            <div class="form-group full">
+                                <label for="serviceField"><i class="fa-solid fa-layer-group"></i> Service of Interest</label>
+                                <select id="serviceField">
+                                    <option value="">Select a service...</option>
+                                    <option>Digital Transformation</option>
+                                    <option>Product Engineering</option>
+                                    <option>Professional IT Services</option>
+                                    <option>Cloud &amp; DevOps</option>
+                                    <option>Digital Marketing</option>
+                                    <option>IT Consulting</option>
+                                </select>
+                            </div>
+                            <div class="form-group full">
+                                <label for="messageField"><i class="fa-regular fa-message"></i> Your Message</label>
+                                <textarea id="messageField" placeholder="Tell us about your project or requirements..." required></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; display:flex; align-items:center; gap:10px; padding:16px;">
+                            <i class="fa-solid fa-paper-plane"></i> Send Message
+                        </button>
+                        <div id="successMsg">
+                            <i class="fa-solid fa-circle-check"></i> Thank you! Your message has been sent. We'll be in touch shortly.
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ Why Contact Us ══ -->
+    <section class="section" style="background:var(--bg-light);">
+        <div class="container" style="text-align:center; max-width:700px; margin:0 auto 50px;" class="fade-in-up">
+            <span class="label-gold"><i class="fa-solid fa-star"></i> WHY CHOOSE US</span>
+            <h2>Reasons to Work With Us</h2>
+        </div>
+        <div class="container" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:24px;" class="gsap-stagger-cards">
+            <div class="glass-card glass-card-3d fade-in-up" style="text-align:center; border-top:4px solid var(--primary);">
+                <i class="fa-solid fa-clock" style="font-size:2.5rem;color:var(--primary);margin-bottom:14px;display:block;"></i>
+                <h3>Quick Response</h3>
+                <p>We respond to all inquiries within 24 business hours.</p>
+            </div>
+            <div class="glass-card glass-card-3d fade-in-up" style="text-align:center; border-top:4px solid var(--accent); transition-delay:0.1s;">
+                <i class="fa-solid fa-shield-halved" style="font-size:2.5rem;color:var(--accent);margin-bottom:14px;display:block;"></i>
+                <h3>NDA Protected</h3>
+                <p>Your project details remain 100% confidential with signed NDA.</p>
+            </div>
+            <div class="glass-card glass-card-3d fade-in-up" style="text-align:center; border-top:4px solid var(--gold); transition-delay:0.2s;">
+                <i class="fa-solid fa-indian-rupee-sign" style="font-size:2.5rem;color:var(--gold);margin-bottom:14px;display:block;"></i>
+                <h3>Free Consultation</h3>
+                <p>The first consultation session is completely free of charge.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ Map ══ -->
+    <section class="section container">
+        <div style="text-align:center; margin-bottom:30px;">
+            <span class="label-gold"><i class="fa-solid fa-map-pin"></i> FIND US</span>
+            <h2>Our Office Location</h2>
+        </div>
+        <div class="map-section fade-in-up">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.5523956827636!2d72.85450127472636!3d19.11498198210289!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c86a37e33a35%3A0x396bfec5cc0fcfa1!2sNaman%20Premier%2C%20Andheri%20East%2C%20Mumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1713000000000"
+                allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                title="A Plus Solution Office Location">
+            </iframe>
+        </div>
+    </section>
+
+    <!-- ══ Footer ══ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="images/logo.png" alt="A Plus Solution" style="height:58px;margin-bottom:16px;filter:brightness(0) invert(1);">
+                    <p style="color:#cbd5e1;font-size:0.9rem;">Premier IT services &amp; consulting company based in Mumbai, India.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-contact">
+                        <li><i class="fa-solid fa-location-dot"></i><div>A-1304, Naman Premier, Military Road, Andheri East, Mumbai 400059</div></li>
+                        <li><i class="fa-solid fa-phone"></i> +91 9920898972</li>
+                        <li><i class="fa-solid fa-phone"></i> +91 7039107512</li>
+                        <li><i class="fa-solid fa-envelope"></i> info@aplusolution.in</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Our Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="services.html"><i class="fa-solid fa-angle-right"></i> Digital Transformation</a></li>
+                        <li><a href="services.html"><i class="fa-solid fa-angle-right"></i> Product Engineering</a></li>
+                        <li><a href="services.html"><i class="fa-solid fa-angle-right"></i> Professional Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html"><i class="fa-solid fa-angle-right"></i> About Us</a></li>
+                        <li><a href="services.html"><i class="fa-solid fa-angle-right"></i> Services</a></li>
+                        <li><a href="blogs.html"><i class="fa-solid fa-angle-right"></i> Blog</a></li>
+                        <li><a href="contact.html"><i class="fa-solid fa-angle-right"></i> Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p style="color:#94a3b8;font-size:0.85rem;margin:0;">&copy; 2024 A Plus Solution. All Rights Reserved.</p>
+                <div class="social-icons">
+                    <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/counter.js"></script>
+    <script>
+    function submitForm(e) {
+        e.preventDefault();
+        const msg = document.getElementById('successMsg');
+        msg.style.display = 'block';
+        document.getElementById('contactForm').reset();
+        setTimeout(() => msg.style.display = 'none', 6000);
+    }
+    </script>
+</body>
+</html>

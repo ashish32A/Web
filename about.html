@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | A Plus Solution — IT Consulting Mumbai</title>
+    <meta name="description" content="Learn about A Plus Solution — our story, founder, mission, vision, and the values that drive our IT consulting work in Mumbai.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <style>
+        .section { padding: 90px 0; position: relative; }
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-bottom: 80px; }
+        .two-col.reverse { direction: rtl; }
+        .two-col.reverse > * { direction: ltr; }
+        .list-icon { margin-top: 20px; }
+        .list-icon li { display: flex; gap: 14px; margin-bottom: 14px; align-items: flex-start; }
+        .list-icon i { color: var(--primary); font-size: 1.1rem; margin-top: 4px; flex-shrink: 0; }
+
+        /* Stats */
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; text-align: center; }
+        .stat-box { background: var(--glass-bg); padding: 40px 20px; border-radius: 20px; box-shadow: var(--glass-shadow); border: var(--glass-border); transition: transform 0.4s; }
+        .stat-box:hover { transform: translateY(-10px); }
+        .stat-box i { font-size: 2.5rem; color: var(--primary); margin-bottom: 12px; display: block; }
+        .stat-box h2 { font-size: 3.5rem; color: var(--gold); margin-bottom: 5px; }
+        .stat-box p { font-weight: 600; margin: 0; color: var(--text); }
+
+        /* Founder */
+        .founder-section {
+            position: relative; text-align: center; padding: 100px 0;
+            background: url('https://aplusolution.in/wp-content/uploads/2026/03/ChatGPT-Image-Mar-31-2026-01_44_01-PM-1024x683.png') center/cover fixed;
+        }
+        .founder-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(160deg, rgba(26,10,9,0.88), rgba(45,15,14,0.85));
+        }
+        .founder-content { position: relative; z-index: 2; }
+        .avatar-frame {
+            width: 180px; height: 180px; border-radius: 50%;
+            background: rgba(255,255,255,0.1); border: 4px solid var(--gold);
+            display: flex; align-items: center; justify-content: center;
+            margin: 30px auto; overflow: hidden; /* Added overflow hidden for round profile pic */
+            box-shadow: 0 0 40px rgba(255,192,0,0.3);
+            /* Removed animation */
+        }
+        .avatar-frame img {
+            width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block;
+        }
+        .founder-quote { font-size: 1.4rem; font-style: italic; max-width: 750px; margin: 24px auto; color: #e2d9d9; line-height: 1.8; }
+        .badge-since {
+            position: absolute; top: -12px; left: -12px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: #fff; padding: 8px 20px; border-radius: 20px;
+            font-weight: bold; transform: rotate(-5deg); font-size: 0.9rem;
+            box-shadow: 0 5px 15px rgba(215,47,45,0.4);
+        }
+
+        /* Image card */
+        .img-card { position: relative; border-radius: 24px; overflow: hidden; box-shadow: 20px 20px 0 rgba(215,47,45,0.1); }
+        .img-card img { width: 100%; height: 380px; object-fit: cover; display: block; }
+
+        @media (max-width: 768px) {
+            .two-col, .two-col.reverse { grid-template-columns: 1fr; direction: ltr; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .founder-quote { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-ring">
+            <img src="images/only-A-small.png" alt="A Plus Solution Loading" class="loader-logo-img">
+        </div>
+        <div class="loader-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <!-- ══ Floating Pill Navbar ══ -->
+    <nav class="navbar" id="mainNav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="images/logo.png" alt="A Plus Solution Logo">
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link active">About Us</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="blogs.html" class="nav-link">Blogs</a></li>
+                <li><a href="contact.html" class="nav-cta"><i class="fa-solid fa-phone-flip"></i> Get In Touch</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger"><i class="fa-solid fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <div class="page-hero">
+        <div class="hero-orb orb-1" style="width:200px;height:200px;top:20%;left:5%;"></div>
+        <div class="hero-orb orb-2" style="width:250px;height:250px;bottom:10%;right:10%;"></div>
+        <div class="container">
+            <span class="label-gold fade-in-up"><i class="fa-solid fa-building"></i> OUR STORY</span>
+            <h1 class="fade-in-up">About A Plus Solution</h1>
+            <p class="fade-in-up" style="font-size:1.1rem; color:var(--subtext); max-width:600px; margin:0 auto 16px;">Built on excellence, driven by innovation, committed to your success.</p>
+            <div class="breadcrumb fade-in-up" style="transition-delay:0.2s;">
+                <a href="index.html">Home</a> &rarr; About Us
+            </div>
+        </div>
+    </div>
+
+    <!-- ══ About Story ══ -->
+    <section class="section" style="background:#fff;">
+        <div class="container two-col">
+            <div class="img-card gsap-slide-left fade-in-up" style="position:relative;">
+                <!-- <div class="badge-since" style="top: -12px; left: -12px;">Since 2020</div> -->
+                <img src="images/Office.jpeg" alt="A Plus Solution Office">
+                <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(215,47,45,0.3),transparent);border-radius:24px;"></div>
+            </div>
+            <div class="gsap-slide-right gsap-text-reveal fade-in-up"
+                 style="padding:40px; background:#fff; border-radius:20px; box-shadow:0 20px 40px rgba(0,0,0,0.06); margin-left:-50px; position:relative; z-index:2;">
+                <span class="label-gold"><i class="fa-solid fa-lightbulb"></i> OUR STORY</span>
+                <h2>Exclusive Agency for Technology Solutions</h2>
+                <p>Welcome to A Plus Solution, where innovation meets transformation in the realm of technological empowerment. We are a movement fueled by an unwavering dedication to pioneering innovation.</p>
+                <p>Our journey is anchored in a profound passion for redefining the landscape of IT services. With this fervor as our guiding light, we proudly present ourselves as your dynamic partner in navigating the digital future.</p>
+                <ul class="list-icon">
+                    <li><i class="fa-solid fa-circle-check"></i><div>Founded in 2020 in Mumbai, Maharashtra</div></li>
+                    <li><i class="fa-solid fa-circle-check"></i><div>Specializing in Enterprise IT &amp; Digital Consulting</div></li>
+                    <li><i class="fa-solid fa-circle-check"></i><div>Trusted by 31+ clients across India</div></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ Stats ══ -->
+    <section class="section" style="background: linear-gradient(160deg, var(--bg-light), #fff);">
+        <div class="container">
+            <div style="text-align:center; max-width:600px; margin:0 auto 50px;">
+                <span class="label-gold"><i class="fa-solid fa-chart-bar"></i> BY THE NUMBERS</span>
+                <h2>Our Impact in Numbers</h2>
+            </div>
+            <div class="stats-grid gsap-stagger-cards">
+                <div class="stat-box fade-in-up">
+                    <i class="fa-solid fa-users"></i>
+                    <h2><span class="counter-val" data-target="31">0</span>+</h2>
+                    <p>Happy Clients</p>
+                </div>
+                <div class="stat-box fade-in-up" style="transition-delay:0.1s;">
+                    <i class="fa-solid fa-folder-open"></i>
+                    <h2><span class="counter-val" data-target="139">0</span></h2>
+                    <p>Projects Done</p>
+                </div>
+                <div class="stat-box fade-in-up" style="transition-delay:0.2s;">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <h2><span class="counter-val" data-target="786">0</span></h2>
+                    <p>Days of Excellence</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ Founder ══ -->
+    <section class="founder-section">
+        <div class="founder-overlay"></div>
+        <div class="container founder-content">
+            <span class="label-gold gsap-zoom-rotate fade-in-up" style="background:rgba(255,192,0,0.15); padding:6px 18px; border-radius:20px;">
+                <i class="fa-solid fa-user-tie"></i> ABOUT THE FOUNDER
+            </span>
+            <h2 style="color:#fff; margin-top:16px; font-size:2.4rem;" class="fade-in-up">DR. KIMAYA AMBEKAR – PARIKH</h2>
+            <div style="font-weight:700; color:var(--gold); letter-spacing:2px; margin-bottom:10px;" class="fade-in-up">
+                <i class="fa-solid fa-crown"></i> CEO &amp; FOUNDER
+            </div>
+            <div class="avatar-frame fade-in-up">
+                <img src="images/founder.png" alt="founder">
+            </div>
+            <p class="founder-quote fade-in-up">
+                "Excellence is the foundation, and success is the inevitable masterpiece built upon it. Strive for the former, and the latter will follow in its footsteps."
+            </p>
+        </div>
+    </section>
+
+    <!-- ══ Vision & Mission ══ -->
+    <section class="section" style="background:#fff;">
+        <div class="container">
+            <div class="two-col gsap-slide-left fade-in-up">
+                <div class="glass-card glass-card-3d"
+                     style="min-height:320px; display:flex; align-items:center; justify-content:center;
+                     outline: 4px dashed rgba(241,90,36,0.25); outline-offset:-16px; border-radius:24px; padding:32px; background:#fff;">
+                    <img src="images/our vision.jpeg" alt="Our Vision" style="width: 100%; max-height: 280px; object-fit: contain; border-radius: 8px;">
+                </div>
+                <div class="gsap-text-reveal fade-in-up">
+                    <span class="label-gold"><i class="fa-solid fa-telescope"></i> VISION</span>
+                    <h2>Empowering Through Technology</h2>
+                    <p>At A Plus Solution, our vision is to empower businesses and individuals with innovative technology solutions that drive growth, efficiency, and success.</p>
+                    <p>We envision a future where technology serves as a catalyst for positive change, enabling organizations to overcome challenges and achieve their full potential in the digital age.</p>
+                </div>
+            </div>
+
+            <div class="two-col reverse gsap-slide-right fade-in-up" style="margin-top:80px;">
+                <div class="glass-card glass-card-3d"
+                     style="min-height:320px; display:flex; align-items:center; justify-content:center;
+                     background: linear-gradient(135deg, rgba(215,47,45,0.05), transparent); border-radius:100px 0 100px 0; padding:24px;">
+                    <img src="images/Our Mission.jpeg" alt="Our Mission" style="width: 100%; max-height: 280px; object-fit: contain; border-radius: 40px 0 40px 0;">
+                </div>
+                <div class="gsap-text-reveal fade-in-up">
+                    <span class="label-gold"><i class="fa-solid fa-crosshairs"></i> MISSION</span>
+                    <h2>Delivering Exceptional Value</h2>
+                    <p>Our mission is to deliver exceptional value by providing cutting-edge IT services, unparalleled expertise, and personalized support. We understand our clients' unique needs and leverage technical prowess to help them achieve their goals.</p>
+                    <p>With a focus on excellence, integrity, and customer satisfaction, we strive to be the partner of choice for businesses seeking to thrive in today's competitive landscape.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ Why Choose Us ══ -->
+    <section class="section" style="background: var(--bg-light);">
+        <div class="container">
+            <div style="text-align:center; max-width:600px; margin:0 auto 50px;" class="fade-in-up">
+                <span class="label-gold"><i class="fa-solid fa-star"></i> WHY US</span>
+                <h2>Why Choose A Plus Solution?</h2>
+            </div>
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:28px;" class="gsap-stagger-cards">
+                <div class="glass-card glass-card-3d fade-in-up" style="text-align:center; border-top:4px solid var(--primary);">
+                    <i class="fa-solid fa-shield-halved" style="font-size:2.5rem; color:var(--primary); margin-bottom:16px; display:block;"></i>
+                    <h3>Trusted &amp; Reliable</h3>
+                    <p>31+ clients trust us for mission-critical IT projects. We deliver on time, every time.</p>
+                </div>
+                <div class="glass-card glass-card-3d fade-in-up" style="text-align:center; border-top:4px solid var(--accent); transition-delay:0.1s;">
+                    <i class="fa-solid fa-users-gear" style="font-size:2.5rem; color:var(--accent); margin-bottom:16px; display:block;"></i>
+                    <h3>Expert Team</h3>
+                    <p>Our multidisciplinary team combines deep technical knowledge with sharp business acumen.</p>
+                </div>
+                <div class="glass-card glass-card-3d fade-in-up" style="text-align:center; border-top:4px solid var(--gold); transition-delay:0.2s;">
+                    <i class="fa-solid fa-handshake" style="font-size:2.5rem; color:var(--gold); margin-bottom:16px; display:block;"></i>
+                    <h3>Client-First Approach</h3>
+                    <p>We prioritize your goals above all else, delivering tailored solutions that fit your exact needs.</p>
+                </div>
+                <div class="glass-card glass-card-3d fade-in-up" style="text-align:center; border-top:4px solid var(--primary); transition-delay:0.3s;">
+                    <i class="fa-solid fa-lightbulb" style="font-size:2.5rem; color:var(--primary); margin-bottom:16px; display:block;"></i>
+                    <h3>Innovative Solutions</h3>
+                    <p>We stay ahead of the curve with the latest technologies and methodologies to future-proof your business.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ Footer ══ -->
+    <footer class="footer fade-in-up">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="images/logo.png" alt="A Plus Solution" style="height:58px; margin-bottom:16px; filter:brightness(0) invert(1);">
+                    <p style="color:#cbd5e1; font-size:0.9rem;">Premier IT services &amp; consulting company based in Mumbai, India.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-contact">
+                        <li><i class="fa-solid fa-location-dot"></i> <div>A-1304, Naman Premier, Military Road, Andheri East, Mumbai 400059</div></li>
+                        <li><i class="fa-solid fa-phone"></i> +91 9920898972</li>
+                        <li><i class="fa-solid fa-phone"></i> +91 7039107512</li>
+                        <li><i class="fa-solid fa-envelope"></i> info@aplusolution.in</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Our Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="services.html"><i class="fa-solid fa-angle-right"></i> Digital Transformation</a></li>
+                        <li><a href="services.html"><i class="fa-solid fa-angle-right"></i> Product Engineering</a></li>
+                        <li><a href="services.html"><i class="fa-solid fa-angle-right"></i> Professional Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html"><i class="fa-solid fa-angle-right"></i> About Us</a></li>
+                        <li><a href="services.html"><i class="fa-solid fa-angle-right"></i> Services</a></li>
+                        <li><a href="blogs.html"><i class="fa-solid fa-angle-right"></i> Blog</a></li>
+                        <li><a href="contact.html"><i class="fa-solid fa-angle-right"></i> Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p style="color:#94a3b8; font-size:0.85rem; margin:0;">&copy; 2024 A Plus Solution. All Rights Reserved.</p>
+                <div class="social-icons">
+                    <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/counter.js"></script>
+</body>
+</html>
